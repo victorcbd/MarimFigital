@@ -1,4 +1,3 @@
-import from 'lucide-react';
 import { PARTNERS_DB, getAssetUrl } from '../data/db';
 
 export const Partners = () => {
@@ -11,7 +10,6 @@ export const Partners = () => {
           </h3>
           <div className="w-16 h-1 bg-marim-yellow mx-auto rounded-full"></div>
         </div>
-        
         {/* Grid de Logos - Data Driven */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center">
           {PARTNERS_DB.map((partner) => (
