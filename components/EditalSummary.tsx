@@ -422,7 +422,7 @@ export const EditalSummary = () => {
 };
 
 // Componente de Acordeão
-const AccordionSection = ({ id, title, icon, children, isOpen, onToggle }: any) => {
+const AccordionSection = ({title, icon, children, isOpen, onToggle }: any) => {
   return (
     <div className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-marim-yellow shadow-md' : 'border-gray-100 hover:border-gray-200'}`}>
       <button 
