@@ -1,4 +1,4 @@
-import from 'react';
+import from;
 import { ClipboardList, Lightbulb, Rocket, Award } from 'lucide-react';
 
 export const Journey = () => {

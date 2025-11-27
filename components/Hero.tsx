@@ -1,4 +1,4 @@
-import from 'react';
+import from;
 import { motion } from 'framer-motion';
 import { ArrowRight, Anchor } from 'lucide-react';
 

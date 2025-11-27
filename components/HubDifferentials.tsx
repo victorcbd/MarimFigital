@@ -1,4 +1,4 @@
-import from 'react';
+import from;
 import { Globe, Map, TrendingUp, Landmark, FileCheck } from 'lucide-react';
 
 export const HubDifferentials = () => {
