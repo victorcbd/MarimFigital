@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Download, CheckCircle, AlertCircle, Calendar, Users, Target, Award, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { Download, CheckCircle, AlertCircle, Calendar, Users, Target, Award, ChevronDown, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAssetUrl } from '../data/db';
 

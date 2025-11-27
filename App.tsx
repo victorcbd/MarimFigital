@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { Concept } from './components/Concept';
 import { HubDifferentials } from './components/HubDifferentials';

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Bell, ShieldAlert, Music, UserCheck, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Bell, ShieldAlert, Music, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Notifications = () => {

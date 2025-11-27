@@ -1,5 +1,5 @@
-import React from 'react';
-import { Globe, Lightbulb, Map, TrendingUp, Landmark, FileCheck } from 'lucide-react';
+import from 'react';
+import { Globe, Map, TrendingUp, Landmark, FileCheck } from 'lucide-react';
 
 export const HubDifferentials = () => {
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Map, Home, Store, Calendar, HeartHandshake } from 'lucide-react';
+import from 'react';
+import { Map, Home, Store, HeartHandshake } from 'lucide-react';
 
 export const Challenges = () => {
   return (

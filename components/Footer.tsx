@@ -1,4 +1,4 @@
-import React from 'react';
+import from 'react';
 import { Instagram, Twitter, Linkedin } from 'lucide-react';
 import { ViewState } from '../App';
 

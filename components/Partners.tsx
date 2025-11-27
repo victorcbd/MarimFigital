@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Upload } from 'lucide-react';
+import from 'react';
+import from 'lucide-react';
 import { PARTNERS_DB, getAssetUrl } from '../data/db';
 
 export const Partners = () => {

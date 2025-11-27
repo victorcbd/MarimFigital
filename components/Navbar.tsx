@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Home, Rocket } from 'lucide-react';
 import { ViewState } from '../App';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search, ShoppingBag, Utensils, Car, Home, Camera } from 'lucide-react';
 
 type Category = 'all' | 'food' | 'crafts' | 'transport' | 'accommodation';

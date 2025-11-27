@@ -1,4 +1,4 @@
-import React from 'react';
+import from 'react';
 import { Layers, Zap, Share2, MapPin, Smartphone, Users } from 'lucide-react';
 
 export const Concept = () => {
