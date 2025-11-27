@@ -1,4 +1,3 @@
-import from;
 import { Map, Home, Store, HeartHandshake } from 'lucide-react';
 
 export const Challenges = () => {

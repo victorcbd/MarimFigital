@@ -1,4 +1,3 @@
-import from;
 import from 'lucide-react';
 import { PARTNERS_DB, getAssetUrl } from '../data/db';
 
