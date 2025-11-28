@@ -217,7 +217,7 @@ export const EditalSummary = () => {
         <div className="space-y-8">
           <div>
             <div className="inline-flex items-center gap-2 bg-marim-yellow/20 text-marim-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-              Edital 2025/2026
+              a partir de 12 de dezembro
             </div>
             <h1 className="text-4xl md:text-5xl font-bold font-['Space_Grotesk'] mb-6 text-marim-dark">
               Jornada de Inovação <br/>Marim Figital

@@ -31,10 +31,15 @@ export const Partners = () => {
         <div className="mt-24 p-10 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl text-center border border-gray-100 shadow-sm relative overflow-hidden">
           <div className="relative z-10">
             <h4 className="text-2xl font-bold text-marim-dark mb-3 font-['Space_Grotesk']">Quer apoiar a inovação em Olinda?</h4>
-            <p className="text-gray-600 mb-6 max-w-xl mx-auto">Sua empresa pode ser mentora ou patrocinadora dessa jornada de transformação.</p>
-            <button className="bg-white text-marim-blue border-2 border-marim-blue font-bold px-8 py-3 rounded-xl hover:bg-marim-blue hover:text-white transition-colors shadow-sm">
+            <p className="text-gray-600 mb-6 max-w-xl mx-auto">Sua instituição pode ser mentora ou patrocinadora dessa jornada de transformação.</p>
+            <a 
+              href="https://wa.me/5581999286808"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-marim-blue border-2 border-marim-blue font-bold px-8 py-3 rounded-xl hover:bg-marim-blue hover:text-white transition-colors shadow-sm"
+            >
               Seja um parceiro estratégico
-            </button>
+            </a>
           </div>
           <div className="absolute top-0 right-0 w-64 h-64 bg-marim-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         </div>
