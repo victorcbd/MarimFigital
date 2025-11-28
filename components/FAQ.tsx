@@ -6,7 +6,7 @@ export const FAQ = () => {
     { q: "Preciso ter experiência técnica (programação)?", a: "Não. Buscamos mentes criativas de todas as áreas. Devs, designers, comunicadores, gestores e artistas. O time se completa." },
     { q: "É pago?", a: "Não. A Jornada é 100% gratuita." },
     { q: "Posso participar sozinho?", a: "Sim! Você se inscreve individualmente. Durante a Maratona de Ideias, ajudaremos você a formar seu trio ideal." },
-    { q: "Qual a idade mínima?", a: "A partir dos 16 anos." },
+    { q: "Qual a idade mínima?", a: "A partir dos 18 anos." },
     { q: "Vou ganhar certificado?", a: "Sim, emitido pelas instituições parceiras para todos que completarem a jornada." },
     { q: "Quanto tempo preciso dedicar?", a: "A Maratona dura 48h (um fim de semana). Depois, se seu projeto for selecionado, teremos encontros quinzenais de mentoria." }
   ];
