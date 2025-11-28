@@ -94,7 +94,7 @@ export const ASSETS_DB: Record<string, Asset> = {
   // --- Documentos ---
   'doc-edital-v1': {
     id: 'doc-edital-v1',
-    url: '/assets/edital-jornada-inovacao-2025.pdf', // Exemplo de caminho
+    url: 'https://docs.google.com/document/d/1JXYpMGL9y4uBK7Ik9oI3NONTTW2MB72wLga0TLTuNRQ/edit?usp=sharing',
     alt: 'Edital Oficial em PDF',
     type: 'document'
   }

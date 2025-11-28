@@ -10,6 +10,94 @@ import { getAssetUrl } from '../data/db';
 // PASSO 4: Cole a URL gerada abaixo
 const GOOGLE_SCRIPT_URL: string = "https://script.google.com/macros/s/AKfycbzp_N7dJGaL0qs16VYGSiQU-7kWSsAMsqJwTSoVE5gJQJmjlukm7qjOKoAYDfvW8W8Fog/exec"; 
 
+// Componente de Acordeão movido para o topo para evitar ReferenceError
+const AccordionSection = ({title, icon, children, isOpen, onToggle }: any) => {
+  return (
+    <div className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-marim-yellow shadow-md' : 'border-gray-100 hover:border-gray-200'}`}>
+      <button 
+        onClick={onToggle}
+        className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+      >
+        <div className="flex items-center gap-4">
+          <div className={`p-2 rounded-lg transition-colors ${isOpen ? 'bg-gray-100' : 'bg-gray-50'}`}>
+            {icon}
+          </div>
+          <span className={`font-bold text-lg ${isOpen ? 'text-marim-dark' : 'text-gray-700'}`}>{title}</span>
+        </div>
+        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <ChevronDown className="text-gray-400" />
+        </div>
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 pt-0 border-t border-gray-100 text-gray-600 leading-relaxed mt-2">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+interface SkillInputProps {
+  title: string;
+  desc: string;
+  value: number;
+  onChange: (val: number) => void;
+  max: number;
+}
+
+const SkillInput = ({ title, desc, value, onChange, max }: SkillInputProps) => {
+  return (
+    <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-marim-yellow/30 transition-colors">
+      <div className="flex justify-between items-center mb-2">
+        <div>
+           <h4 className="font-bold text-sm text-marim-dark">{title}</h4>
+           <p className="text-[10px] text-gray-500 max-w-[150px] leading-tight">{desc}</p>
+        </div>
+        <div className="flex items-center gap-2 bg-white px-2 py-1 rounded-lg shadow-sm border border-gray-200">
+          <button 
+            type="button"
+            onClick={() => onChange(value - 1)}
+            className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 text-marim-dark font-bold text-sm"
+            disabled={value <= 0}
+          >
+            -
+          </button>
+          <span className="w-4 text-center font-bold text-sm">{value}</span>
+          <button 
+            type="button"
+            onClick={() => onChange(value + 1)}
+            className="w-6 h-6 rounded-full bg-marim-yellow flex items-center justify-center hover:bg-yellow-400 text-marim-dark font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={max <= 0}
+          >
+            +
+          </button>
+        </div>
+      </div>
+      
+      {/* Visual Stars Bar */}
+      <div className="flex gap-1 mt-2">
+        {[...Array(10)].map((_, i) => (
+          <div 
+            key={i} 
+            className={`h-1.5 flex-1 rounded-full transition-colors ${i < value ? 'bg-marim-blue' : 'bg-gray-200'}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const EditalSummary = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -96,8 +184,7 @@ export const EditalSummary = () => {
   // Função simulada de download buscando do banco
   const handleDownload = () => {
     const url = getAssetUrl('doc-edital-v1');
-    alert(`Redirecionando para download: ${url}`);
-    // window.open(url, '_blank'); // Em produção, descomentar isso
+    window.open(url, '_blank');
   };
 
   if (submitted) {
@@ -143,17 +230,23 @@ export const EditalSummary = () => {
           <div className="space-y-4">
             <AccordionSection 
               id="desafio"
-              title="O Desafio: Futuro do Turismo"
+              title="O Desafio: Futuro do Turismo em Olinda"
               icon={<Target className="text-marim-red" size={24} />}
               isOpen={expandedSection === 'desafio'}
               onToggle={() => toggleSection('desafio')}
             >
               <p className="mb-3">A primeira edição foca integralmente no <strong>Turismo</strong>. Buscamos soluções que resolvam problemas reais:</p>
               <ul className="space-y-2 list-disc list-inside text-gray-600 text-sm">
-                <li><strong>Acessibilidade no Sítio Histórico:</strong> Melhorar a experiência de idosos e PCDs nas ladeiras.</li>
-                <li><strong>Inteligência Territorial:</strong> Uso de dados para entender o fluxo de turistas.</li>
-                <li><strong>Selo 'Feito em Olinda':</strong> Certificação digital para valorizar a produção local.</li>
-                <li><strong>Novos Roteiros:</strong> Experiências imersivas que conectem história e tecnologia.</li>
+                <li><strong>Acessibilidade no Sítio Histórico:</strong></li> 
+                <li><strong>Inteligência Territorial:</strong></li> 
+                <li><strong>Selo 'Feito em Olinda':</strong></li> 
+                <li><strong>Roteiros Criativos e Experiências Imersivas</strong></li> 
+                <li><strong>Formação de Guias e Jovens em Turismo Criativo</strong></li> 
+                <li><strong>Visit Olinda” — Plataforma Colaborativa de Turismo</strong></li> 
+                <li><strong>Turismo de Base Comunitária e Sustentabilidade</strong</li> 
+                <li><strong>Comunicação e Identidade dos 500 Anos de Olinda</strong></li>
+                <li><strong>Mercado da Ribeira 5.0</strong></li>
+                <li><strong>Centro de Inteligência Turística Cidadã</strong></li>
               </ul>
             </AccordionSection>
 
@@ -335,33 +428,33 @@ export const EditalSummary = () => {
               {/* Distribuição de Habilidades */}
               <div>
                 <div className="flex justify-between items-center mb-4">
-                   <label className="block font-bold text-gray-800">Seu Perfil (Gamificação)</label>
+                   <label className="block font-bold text-gray-800">Seu Perfil dentro de um time </label>
                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${isValidSkills ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
                      {totalPoints}/10 Pontos
                    </span>
                 </div>
                 <p className="text-xs text-gray-500 mb-6 bg-blue-50 p-2 rounded border border-blue-100">
-                  Distribua exatamente <strong>10 estrelas</strong> entre as habilidades que mais te representam.
+                  Distribua exatamente <strong>10 pontos </strong> entre as habilidades que mais te representam.
                 </p>
 
                 <div className="space-y-6">
                   <SkillInput 
-                    title="Hacker (Tech)"
-                    desc="Programação, dados e soluções técnicas."
+                    title="Hacker (Tecnico)"
+                    desc="Programação, soluções técnicas, ferramentas."
                     value={skills.hacker}
                     onChange={(v) => handleSkillChange('hacker', v)}
                     max={10 - (skills.hustler + skills.hipster)}
                   />
                   <SkillInput 
-                    title="Hustler (Biz)"
-                    desc="Negócios, vendas e liderança."
+                    title="Hustler (Empreendedor)"
+                    desc="Negócios, vendas, numeros, liderança."
                     value={skills.hustler}
                     onChange={(v) => handleSkillChange('hustler', v)}
                     max={10 - (skills.hacker + skills.hipster)}
                   />
                   <SkillInput 
-                    title="Hipster (Design)"
-                    desc="Criatividade, UX e experiência."
+                    title="Hipster (comunicador)"
+                    desc="Criatividade, experiência, design, comunicação."
                     value={skills.hipster}
                     onChange={(v) => handleSkillChange('hipster', v)}
                     max={10 - (skills.hacker + skills.hustler)}
@@ -416,94 +509,6 @@ export const EditalSummary = () => {
             </form>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-// Componente de Acordeão
-const AccordionSection = ({title, icon, children, isOpen, onToggle }: any) => {
-  return (
-    <div className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen ? 'border-marim-yellow shadow-md' : 'border-gray-100 hover:border-gray-200'}`}>
-      <button 
-        onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
-      >
-        <div className="flex items-center gap-4">
-          <div className={`p-2 rounded-lg transition-colors ${isOpen ? 'bg-gray-100' : 'bg-gray-50'}`}>
-            {icon}
-          </div>
-          <span className={`font-bold text-lg ${isOpen ? 'text-marim-dark' : 'text-gray-700'}`}>{title}</span>
-        </div>
-        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-          <ChevronDown className="text-gray-400" />
-        </div>
-      </button>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 pt-0 border-t border-gray-100 text-gray-600 leading-relaxed mt-2">
-              {children}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-interface SkillInputProps {
-  title: string;
-  desc: string;
-  value: number;
-  onChange: (val: number) => void;
-  max: number;
-}
-
-const SkillInput = ({ title, desc, value, onChange, max }: SkillInputProps) => {
-  return (
-    <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 hover:border-marim-yellow/30 transition-colors">
-      <div className="flex justify-between items-center mb-2">
-        <div>
-           <h4 className="font-bold text-sm text-marim-dark">{title}</h4>
-           <p className="text-[10px] text-gray-500 max-w-[150px] leading-tight">{desc}</p>
-        </div>
-        <div className="flex items-center gap-2 bg-white px-2 py-1 rounded-lg shadow-sm border border-gray-200">
-          <button 
-            type="button"
-            onClick={() => onChange(value - 1)}
-            className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 text-marim-dark font-bold text-sm"
-            disabled={value <= 0}
-          >
-            -
-          </button>
-          <span className="w-4 text-center font-bold text-sm">{value}</span>
-          <button 
-            type="button"
-            onClick={() => onChange(value + 1)}
-            className="w-6 h-6 rounded-full bg-marim-yellow flex items-center justify-center hover:bg-yellow-400 text-marim-dark font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={max <= 0}
-          >
-            +
-          </button>
-        </div>
-      </div>
-      
-      {/* Visual Stars Bar */}
-      <div className="flex gap-1 mt-2">
-        {[...Array(10)].map((_, i) => (
-          <div 
-            key={i} 
-            className={`h-1.5 flex-1 rounded-full transition-colors ${i < value ? 'bg-marim-blue' : 'bg-gray-200'}`}
-          />
-        ))}
       </div>
     </div>
   );
