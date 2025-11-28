@@ -44,7 +44,7 @@ export default function App() {
               <HubDifferentials />
             </section>
             <section id="talentos">
-              <TalentAttraction />
+              <TalentAttraction onNavigate={setCurrentView} />
             </section>
             <section id="quem-faz" className="bg-gray-50">
               <Partners />

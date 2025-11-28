@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useMemo } from 'react';
+import { ViewState } from '../App';
 
 // Definição dos tipos para a simulação física
 interface Node {
@@ -14,7 +15,11 @@ interface Node {
   isDragging: boolean;
 }
 
-export const TalentAttraction = () => {
+interface TalentAttractionProps {
+  onNavigate?: (view: ViewState) => void;
+}
+
+export const TalentAttraction = ({ onNavigate }: TalentAttractionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>(0);
   const nodesRef = useRef<Node[]>([]);
@@ -323,9 +328,12 @@ export const TalentAttraction = () => {
           })}
 
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-              <span className="pointer-events-auto inline-block bg-marim-dark text-white px-8 py-3 rounded-full text-lg font-bold shadow-2xl hover:scale-105 active:scale-95 transition-transform cursor-pointer border-4 border-white/20">
+              <button
+                  onClick={() => onNavigate && onNavigate('edital')}
+                  className="pointer-events-auto inline-block bg-marim-dark text-white px-8 py-3 rounded-full text-lg font-bold shadow-2xl hover:scale-105 active:scale-95 transition-transform cursor-pointer border-4 border-white/20"
+              >
                   Você se encaixa? 👇
-              </span>
+              </button>
           </div>
         </div>
       </div>

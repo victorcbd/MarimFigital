@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import { ViewState } from '../App';
 
 interface FooterProps {
@@ -13,12 +13,11 @@ export const Footer = ({ onNavigate }: FooterProps) => {
           <div className="col-span-1 md:col-span-2">
             <h2 className="text-3xl font-bold mb-4">MARIM FIGITAL</h2>
             <p className="text-gray-400 max-w-sm mb-6">
-              O primeiro hub de inovação territorial de Olinda. Misturando tradição, tecnologia e gente pra criar um futuro massa.
+              Inovar para fazer Olinda um espaço cada vez mais atrativo e transformador.
             </p>
             <div className="flex gap-4">
-              <SocialIcon icon={<Instagram size={20} />} />
-              <SocialIcon icon={<Twitter size={20} />} />
-              <SocialIcon icon={<Linkedin size={20} />} />
+              <SocialIcon href="https://www.instagram.com/marimfigital" icon={<Instagram size={20} />} />
+              <SocialIcon href="#" icon={<Linkedin size={20} />} />
             </div>
           </div>
           
@@ -48,8 +47,13 @@ export const Footer = ({ onNavigate }: FooterProps) => {
   );
 };
 
-const SocialIcon = ({ icon }: any) => (
-  <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-marim-yellow hover:text-marim-dark transition-all">
+const SocialIcon = ({ icon, href }: any) => (
+  <a 
+    href={href} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-marim-yellow hover:text-marim-dark transition-all"
+  >
     {icon}
   </a>
 );
