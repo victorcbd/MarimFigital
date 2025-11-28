@@ -243,7 +243,7 @@ export const EditalSummary = () => {
                 <li><strong>Roteiros Criativos e Experiências Imersivas</strong></li> 
                 <li><strong>Formação de Guias e Jovens em Turismo Criativo</strong></li> 
                 <li><strong>Visit Olinda” — Plataforma Colaborativa de Turismo</strong></li> 
-                <li><strong>Turismo de Base Comunitária e Sustentabilidade</strong</li> 
+                <li><strong>Turismo de Base Comunitária e Sustentabilidade</strong></li> 
                 <li><strong>Comunicação e Identidade dos 500 Anos de Olinda</strong></li>
                 <li><strong>Mercado da Ribeira 5.0</strong></li>
                 <li><strong>Centro de Inteligência Turística Cidadã</strong></li>
